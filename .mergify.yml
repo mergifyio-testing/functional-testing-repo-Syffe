@@ -27,7 +27,7 @@ pull_request_rules:
       queue:
         name: default
         
-    - name: merge using the low queue
+  - name: merge using the low queue
     conditions:
       - label=low
       - check-success=compile-and-test
