@@ -1,37 +1,52 @@
+defaults:
+  actions:
+    queue:
+      name: default
+      method: squash
+      update_method: rebase
+    squash:
+      commit_message: first-commit
+
 queue_rules:
   - name: high
-    conditions: []
+    allow_inplace_checks: true
+    conditions: 
+      - check-success=compile-and-test
     speculative_checks: 3
 
   - name: default
-    conditions: []
+    allow_inplace_checks: true
+    conditions: 
+      - check-success=compile-and-test
     speculative_checks: 3
 
   - name: low
-    conditions: []
+    allow_inplace_checks: true
+    conditions: 
+      - check-success=compile-and-test
     speculative_checks: 3
+    batch_size: 5
 
 pull_request_rules:
-  - name: merge using the high queue
+  - name: automatic merge for high
     conditions:
+      - base=main
       - label=high
     actions:
       queue:
         name: high
-        require_branch_protection: false
 
-  - name: merge using the default queue
+  - name: automatic merge
     conditions:
+      - base=main
       - label=default
     actions:
       queue:
-        name: default
-        require_branch_protection: false
-
-  - name: merge using the low queue
+      
+  - name: automatic merge for low
     conditions:
+      - base=main
       - label=low
     actions:
       queue:
         name: low
-        require_branch_protection: false
