@@ -1,13 +1,34 @@
 queue_rules:
+  - name: high
+    conditions: []
+    speculative_checks: 3
+
   - name: default
-    conditions:
-      - check-success=compile-and-test
+    conditions: []
+    speculative_checks: 3
+
+  - name: low
+    conditions: []
+    speculative_checks: 3
 
 pull_request_rules:
-  - name: merge using the merge queue
+  - name: merge using the high queue
     conditions:
-      - base=main
-      - check-success=compile-and-test
+      - label=high
+    actions:
+      queue:
+        name: high
+
+  - name: merge using the default queue
+    conditions:
+      - label=default
     actions:
       queue:
         name: default
+
+  - name: merge using the low queue
+    conditions:
+      - label=low
+    actions:
+      queue:
+        name: low
