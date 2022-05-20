@@ -18,6 +18,7 @@ pull_request_rules:
     actions:
       queue:
         name: high
+        require_branch_protection: false
 
   - name: merge using the default queue
     conditions:
@@ -25,6 +26,7 @@ pull_request_rules:
     actions:
       queue:
         name: default
+        require_branch_protection: false
 
   - name: merge using the low queue
     conditions:
@@ -32,3 +34,4 @@ pull_request_rules:
     actions:
       queue:
         name: low
+        require_branch_protection: false
