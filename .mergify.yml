@@ -1,0 +1,15 @@
+pull_request_rules:
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=dummy
+  - status-success=continuous-integration/fake-ci
+  name: valid PR dummy
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=20220628153903/test_failed_special_attributes_rules_in_not_applicable_summary_section/main
+  - status-success=continuous-integration/fake-ci
+  name: valid PR main
