@@ -1,0 +1,38 @@
+pull_request_rules:
+- actions:
+    review:
+      type: APPROVE
+  conditions:
+  - base=20220701095801/test_failed_base_changeable_attributes_rules_in_not_applicable_summary_section_with_complex_conditions/main
+  name: approved review
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - or:
+    - label=test
+    - base=dummy
+  - and:
+    - changes-requested-reviews-by=0review-threads-unresolved=0label!=work-in-progresslabel!=manual
+      merge
+  name: valid rule label
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - and:
+    - base=dummy
+    - approved-reviews-by>=1changes-requested-reviews-by=0review-threads-unresolved=0label!=work-in-progresslabel!=manual
+      merge
+  name: invalid rule main
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - or:
+    - label=fake_label
+    - status-success=continuous-integration/fake-ci
+    - base=dummy
+  - and:
+    - changes-requested-reviews-by=0review-threads-unresolved=0status-success=continuous-integration/fake-ci
+  name: invalid rule label
