@@ -1,0 +1,7 @@
+pull_request_rules:
+- actions:
+    comment:
+      message: list commits not empty
+  conditions:
+  - commits~=test_commits_not_empty_condition
+  name: list_commits
