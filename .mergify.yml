@@ -1,0 +1,4 @@
+commands_restrictions:
+  copy:
+    conditions:
+    - base=20220818143036/test_commands_restrictions/main
