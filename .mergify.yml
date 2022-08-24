@@ -1,0 +1,10 @@
+pull_request_rules:
+- actions:
+    queue: {}
+  conditions:
+  - base=20220824131858/test_draft_pr_unqueue_after_unexpected_changes/main
+  - label=queue
+  name: Merge priority high
+queue_rules:
+- conditions: []
+  name: default
