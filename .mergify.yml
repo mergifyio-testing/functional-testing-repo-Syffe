@@ -1,0 +1,11 @@
+pull_request_rules:
+- conditions:
+  - base=20221017143102/test_queue_reset_after_manual_merge_when_batch_started_merging/main
+  - label=queue
+  name: Merge  default
+queue_rules:
+- batch_size: 2
+  conditions:
+  - status-success=continuous-integration/fake-ci
+  name: default
+  speculative_checks: 1
