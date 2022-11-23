@@ -1,0 +1,42 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: urgent
+  conditions:
+  - base=20221123141120/test_without_cascading_double_freeze_on_middle_queues/main
+  - label=queue-urgent
+  name: Merge priority high
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20221123141120/test_without_cascading_double_freeze_on_middle_queues/main
+  - label=queue
+  name: Merge default
+- actions:
+    queue:
+      name: refactor
+  conditions:
+  - base=20221123141120/test_without_cascading_double_freeze_on_middle_queues/main
+  - label=queue-refactor
+  name: Merge refactor
+- actions:
+    queue:
+      name: low-priority
+  conditions:
+  - base=20221123141120/test_without_cascading_double_freeze_on_middle_queues/main
+  - label=queue-low
+  name: Merge low
+queue_rules:
+- conditions:
+  - status-success=continuous-integration/fast-ci
+  name: urgent
+- conditions:
+  - status-success=continuous-integration/slow-ci
+  name: default
+- conditions:
+  - status-success=continuous-integration/slow-ci
+  name: refactor
+- conditions:
+  - status-success=continuous-integration/slow-ci
+  name: low-priority
