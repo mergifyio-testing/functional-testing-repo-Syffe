@@ -1,0 +1,13 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20221223140600/test_toto/main
+  - label=queue
+  name: automatic queue
+queue_rules:
+- conditions:
+  - status-success=ci/myfavoriteci
+  - schedule=Mon-Fri 09:00-17:30[UTC]
+  name: default
