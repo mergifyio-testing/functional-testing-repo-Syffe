@@ -1,0 +1,14 @@
+pull_request_rules:
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=20221223132121/test_toto/main
+  - '#approved-reviews-by>=2'
+  - status-success=ci/myfavoriteci
+  name: automatic merge
+queue_rules:
+- conditions:
+  - status-success=ci/myfavoriteci
+  - schedule=Mon-Fri 09:00-17:30[UTC]
+  name: default
