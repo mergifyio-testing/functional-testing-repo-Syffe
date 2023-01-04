@@ -1,0 +1,21 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20230104105654/test_queue_failure_priority_rules/main
+  - label=queue
+  name: Merge priority high
+queue_rules:
+- conditions:
+  - status-success=continuous-integration/fake-ci
+  name: default
+  priority_rules:
+  - conditions:
+    - label=hotfix
+    name: hotfix PR detected
+    priority: 01-01-2023
+  - conditions:
+    - -label=hotfix
+    name: default priority
+    priority: false text
