@@ -1,0 +1,6 @@
+queue_rules:
+- merge_conditions:
+  - status-success=continuous-integration/fake-ci
+  name: hotfix
+  routing_conditions:
+  - label=hotfix
