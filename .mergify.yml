@@ -2,5 +2,5 @@ pull_request_rules:
 - actions:
     merge: {}
   conditions:
-  - label!=nothing
-  name: nothing
+  - label!=toto
+  name: toto
