@@ -1,10 +1,17 @@
 pull_request_rules:
-- actions:
-    queue:
-      name: default
-  caca:
-  - base=20230322104427/test_invalid_configuration_fixed_by_pull_request/main
-  name: Queue
+- - actions:
+      queue:
+        name: default
+    conditions:
+    - base=20230322104427/test_invalid_configuration_fixed_by_pull_request/main
+    name: Queue_toto
+  - actions:
+      label:
+        toggle:
+        - queued
+    conditions:
+    - queue-position>=0
+    name: label
 queue_rules:
 - merge_conditions:
   - status-success=continuous-integration/fake-ci
