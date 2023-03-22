@@ -1,6 +1,14 @@
 pull_request_rules:
-- name: foobar
-  wrong key: 123
+- actions:
+    merge: {}
+  conditions:
+  - label!=wip
+  name: foobar
+- actions:
+    merge: {}
+  conditions:
+  - label!=wip
+  name: caca
 queue_rules:
 - merge_conditions:
   - status-success=continuous-integration/fake-ci
