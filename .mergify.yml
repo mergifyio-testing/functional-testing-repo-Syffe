@@ -5,6 +5,13 @@ pull_request_rules:
   conditions:
   - base=20230322135858/test_queued_label_rule_after_config_update/main
   name: Queue
+- actions:
+    label:
+      toggle:
+      - queued
+  conditions:
+  - queue-position>=0
+  name: label
 queue_rules:
 - merge_conditions:
   - status-success=continuous-integration/fake-ci
