@@ -1,0 +1,20 @@
+partition_rules:
+- conditions: []
+  fallback_partition: true
+  name: fallback_partition
+- conditions:
+  - files~=^projB/
+  name: projB
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20230419083435/test_not_all_partitions_reset_with_train_car_when_pr_manual_merge_with_fallback_partitions/main
+  - label=queue
+  name: Automatic merge
+queue_rules:
+- allow_inplace_checks: false
+  merge_conditions:
+  - status-success=continuous-integration/fake-ci
+  name: default
