@@ -1,0 +1,16 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20230718141126/test_unsuccessful_checks_filters_out_neutral_and_skipped_checks/main
+  - label=queue
+  name: merge default
+queue_rules:
+- merge_conditions:
+  - status-success=continuous-integration/fake-ci
+  - status-success=continuous-integration/fake-ci_2
+  - status-success=continuous-integration/fake-ci_3
+  - status-success=continuous-integration/fake-ci_4
+  - status-success=continuous-integration/fake-ci_5
+  name: default
