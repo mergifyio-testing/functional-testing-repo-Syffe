@@ -1,0 +1,24 @@
+pull_request_rules:
+- actions:
+    post_check:
+      success_conditions:
+      - schedule=Mon-Thu 15:20-18:00[Europe/Paris]
+      - schedule=Fri-Fri 09:00-12:00[Europe/Paris]
+      summary: '
+
+        {% if not check_succeed %}
+
+        We are not in working hours, try another time
+
+        {% else %}
+
+        We are in working hours, well done
+
+        {% endif %}
+
+        '
+      title: 'Pull request #{{ number }} is{% if not check_succeed %} not{% endif
+        %} available for merge'
+  conditions:
+  - base=20230725141309/test_post_checks_with_schedule/main
+  name: post toto if inside business hours
