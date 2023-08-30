@@ -1,0 +1,12 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+      require_branch_protection: true
+  conditions:
+  - base=20230830144749/test_require_branch_protection_deprecation_notice/main
+  - label=queue
+  name: Merge priority high
+queue_rules:
+- conditions: []
+  name: default
