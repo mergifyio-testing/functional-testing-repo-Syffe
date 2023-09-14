@@ -1,0 +1,16 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+  conditions:
+  - base=20230914125505/test_toto_unsuccessful_checks/main
+  - label=queue
+  name: merge default
+queue_rules:
+- merge_conditions:
+  - '#check-failure!=0'
+  name: default
+  queue_conditions:
+  - status-success=continuous-integration/fake-ci
+  - status-success=continuous-integration/fake-ci_2
+  - status-success=continuous-integration/fake-ci_3
