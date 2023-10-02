@@ -1,0 +1,13 @@
+pull_request_rules:
+- actions:
+    queue:
+      name: default
+      update_method: merge
+  conditions:
+  - base=20231002163248/test_queue_update_with_update_method_merge_without_bot_account/main
+  - label=queue
+  name: merge default
+queue_rules:
+- conditions:
+  - status-success=continuous-integration/fake-ci
+  name: default
