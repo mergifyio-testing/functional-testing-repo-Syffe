@@ -1,0 +1,10 @@
+pull_request_rules:
+- actions:
+    queue:
+      priority: high
+      require_branch_protection: true
+  conditions:
+  - base=20231019150419/test_require_branch_protection_brownout/main
+  - label=high
+  - status-success=continuous-integration/fake-ci
+  name: Merge priority high
