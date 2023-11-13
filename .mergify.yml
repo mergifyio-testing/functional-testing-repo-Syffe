@@ -1,0 +1,7 @@
+pull_request_rules:
+- actions:
+    merge:
+      merge_bot_account: '{{ body }}'
+  conditions:
+  - base=20231113095844/test_merge_without_admin_bot_account/main
+  name: merge on main
