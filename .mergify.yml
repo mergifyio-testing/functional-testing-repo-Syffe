@@ -1,0 +1,6 @@
+defaults:
+  actions:
+    backport:
+      branches:
+      - 20231121161858/test_command_backport_with_defaults/stable/#3.1
+      - 20231121161858/test_command_backport_with_defaults/feature/one
