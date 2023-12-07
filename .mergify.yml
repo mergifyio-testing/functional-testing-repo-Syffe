@@ -1,0 +1,22 @@
+pull_request_rules:
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=20231207132108/test_valid_checkmark/main
+  - label=test
+  name: test
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=20231207132108/test_valid_checkmark/main
+  - label=toto
+  name: toto
+- actions:
+    merge:
+      method: rebase
+  conditions:
+  - base=20231207132108/test_valid_checkmark/main
+  - label=tata
+  name: tata
