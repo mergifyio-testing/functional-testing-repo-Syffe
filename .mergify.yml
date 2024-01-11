@@ -5,3 +5,8 @@ pull_request_rules:
   - base=20240111101234/test_disallowed_change_mergify_yml/main
   mergify_configuration_changed: false
   name: nothing
+- actions:
+    merge: {}
+  conditions:
+  - label!=wip
+  name: foobar
