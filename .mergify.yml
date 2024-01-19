@@ -1,0 +1,20 @@
+
+    extends: .github
+
+    queue_rules:
+      - name: queue
+        merge_conditions: *common_checks
+        checks_timeout: 25m
+
+
+    pull_request_rules:
+      - name: queue
+        conditions:
+          - base=20240119153557/test_yaml_anchors_config_extension/main
+          - label=to-be-merged
+          - and: *common_checks
+        actions:
+          queue:
+            name: queue
+            method: squash
+    
