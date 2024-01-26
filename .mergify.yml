@@ -1,0 +1,9 @@
+pull_request_rules:
+- actions:
+    merge: {}
+  conditions:
+  - base=20240126104103/test_bypass_branch_protections_with_none_injection_mode/main
+  name: Merge default
+queue_rules:
+- merge_conditions: []
+  name: default
