@@ -1,0 +1,20 @@
+
+    shared:
+      common_queue_conditions: &common_queue_conditions
+          # - branch-protection-review-decision=APPROVED
+          - check-success=continuous-integration/fake-ci
+          - check-success=continuous-integration/fake-ci-long
+          - base=20240129154642/test_charly/main
+
+
+    queue_rules:
+      - name: default
+        batch_size: 3
+        speculative_checks: 2
+        allow_inplace_checks: false
+        merge_conditions:
+          - check-success=continuous-integration/fake-ci
+          - check-success=continuous-integration/fake-ci-long
+        queue_conditions:
+          - and: *common_queue_conditions
+    
