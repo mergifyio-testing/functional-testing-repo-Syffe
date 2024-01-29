@@ -1,0 +1,35 @@
+
+    shared:
+      common_queue_conditions: &common_queue_conditions
+          # - branch-protection-review-decision=APPROVED
+          - check-success=continuous-integration/fake-ci
+          - check-success=continuous-integration/fake-ci-long
+          - base=20240129152810/test_charly/main
+
+
+    queue_rules:
+      - name: default
+        batch_size: 8
+        batch_max_wait_time: 4 h
+        speculative_checks: 2
+        allow_inplace_checks: false
+        merge_method: squash
+        merge_conditions:
+          - check-success=continuous-integration/fake-ci
+          - check-success=continuous-integration/fake-ci-long
+        branch_protection_injection_mode: merge
+        queue_conditions:
+          - and: *common_queue_conditions
+
+      - name: git-merge-not-squash
+        allow_inplace_checks: false
+        merge_method: merge
+        merge_conditions:
+          - check-success=continuous-integration/fake-ci
+          - check-success=continuous-integration/fake-ci-long
+        branch_protection_injection_mode: merge
+        queue_conditions:
+          - and: *common_queue_conditions
+        disallow_checks_interruption_from_queues:
+          - default
+    
