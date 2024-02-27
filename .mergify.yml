@@ -1,0 +1,21 @@
+pull_request_rules:
+- actions:
+    merge:
+      method: merge
+  conditions:
+  - base=20240227134910/TBAtest_backport_report_mode_comment_and_check/main
+  - label=backport-#3.1
+  name: Merge on main
+- actions:
+    backport:
+      branches:
+      - 20240227134910/TBAtest_backport_report_mode_comment_and_check/stable/#3.1
+      labels:
+      - backported
+      report_mode:
+      - comment
+      - check
+  conditions:
+  - base=20240227134910/TBAtest_backport_report_mode_comment_and_check/main
+  - label=backport-#3.1
+  name: Backport to stable/#3.1
