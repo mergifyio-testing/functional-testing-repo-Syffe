@@ -1,0 +1,9 @@
+pull_request_rules:
+- actions:
+    copy:
+      branches:
+      - dev
+  conditions:
+  - base=20240315144303/test_copy_with_commit_signature/main
+  - label=backport-#3.1
+  name: copy
